@@ -1,0 +1,1200 @@
+/* ==========================================================================
+   ŌLAI-CHUVADI (ஓலைச்சுவடி) COMPREHENSIVE DESIGN SYSTEM
+   Authentic South Indian Palm-Leaf Manuscript Aesthetics for OlaiLens / சான்றகம்
+   ========================================================================== */
+
+:root {
+  /* Palm Leaf Ochre & Amber Tones */
+  --olai-light: #dfc28d;
+  --olai-base: #c59f63;
+  --olai-mid: #b88f50;
+  --olai-dark: #9e7539;
+  --olai-shadow: #7a5826;
+  --olai-border: rgba(90, 56, 20, 0.55);
+
+  /* Stylus Iron Soot Ink Typography */
+  --soot-ink: #1b1208;
+  --soot-mid: #332212;
+  --soot-muted: #573c22;
+  --soot-shadow: rgba(35, 18, 4, 0.72);
+  --soot-highlight: rgba(255, 235, 195, 0.45);
+
+  /* Red Cotton Binding Cord */
+  --cord-red: #8f2118;
+  --cord-crimson: #a6281e;
+  --cord-dark: #5e110c;
+  --cord-shadow: rgba(40, 10, 8, 0.6);
+
+  /* Ancient Teak Wood Boards */
+  --teak-darkest: #1a0f07;
+  --teak-dark: #27160c;
+  --teak-mid: #3d2314;
+  --teak-light: #59351e;
+  --teak-border: rgba(140, 92, 54, 0.35);
+
+  /* Vilakku Oil Lamp Atmosphere */
+  --lamp-glow: rgba(255, 182, 90, 0.22);
+  --lamp-amber: #e89838;
+  --lamp-bg: #140d07;
+
+  /* Typography Scales */
+  --font-tamil-serif: 'Noto Serif Tamil', Georgia, serif;
+  --font-tamil-sans: 'Noto Sans Tamil', sans-serif;
+  --font-editorial: 'Cormorant Garamond', Georgia, serif;
+
+  /* Universal Shadow Tokens */
+  --leaf-shadow: 0 14px 34px rgba(20, 12, 5, 0.38), 0 4px 10px rgba(20, 12, 5, 0.22);
+  --board-shadow: 0 24px 60px rgba(10, 6, 2, 0.65), 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+/* Base resets & atmospheric background */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #1f140a;
+  background-image: 
+    radial-gradient(ellipse at 50% 0%, rgba(68, 42, 19, 0.6) 0%, transparent 75%),
+    linear-gradient(180deg, #180e06 0%, #24160c 50%, #150d06 100%);
+  background-attachment: fixed;
+  color: #f7eedc;
+  font-family: var(--font-tamil-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   OIL LAMP NIGHT MODE (விளக்கு ஒளி)
+   ========================================================================== */
+body.dark-lamp {
+  background-color: #0b0704;
+  background-image:
+    radial-gradient(
+      circle 540px at var(--lamp-x, 50%) var(--lamp-y, 45%),
+      rgba(255, 180, 85, 0.24) 0%,
+      rgba(230, 125, 30, 0.08) 55%,
+      transparent 100%
+    ),
+    radial-gradient(ellipse at 50% 20%, rgba(35, 20, 9, 0.5) 0%, #080503 100%);
+  background-attachment: fixed;
+  transition: background-color 0.4s ease;
+}
+
+body.dark-lamp::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: radial-gradient(
+    circle 580px at var(--lamp-x, 50%) var(--lamp-y, 45%),
+    transparent 0%,
+    rgba(6, 4, 2, 0.42) 75%,
+    rgba(4, 2, 1, 0.75) 100%
+  );
+  animation: lamp-breathe 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes lamp-breathe {
+  0% { opacity: 0.94; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.015); }
+  100% { opacity: 0.92; transform: scale(0.99); }
+}
+
+/* ==========================================================================
+   TOP SITE NAVIGATION (TWO-TIER TEAK BOARD & SHELF STYLE)
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(180deg, #2c1a0e 0%, #1a0d05 100%);
+  border-bottom: 2px solid #5a381a;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.6);
+}
+
+.site-header__top {
+  width: 100%;
+  max-width: 1140px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px clamp(16px, 3vw, 36px);
+  border-bottom: 1px solid rgba(120, 75, 38, 0.35);
+  box-sizing: border-box;
+}
+
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #f5dfbe;
+  flex-shrink: 0;
+}
+
+.site-brand__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #c59f63 0%, #9e7539 100%);
+  border: 1px solid #e0c38c;
+  border-radius: 6px;
+  color: #1b1208;
+  font-size: 1rem;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.4), 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.site-brand__title {
+  font-family: var(--font-tamil-serif);
+  font-weight: 700;
+  font-size: 1.18rem;
+  color: #faebd7;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.site-header__shelf {
+  width: 100%;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.015) 0px,
+      rgba(255, 255, 255, 0.015) 1px,
+      transparent 1px,
+      transparent 8px
+    ),
+    linear-gradient(180deg, #221208 0%, #170b04 100%);
+  padding: 6px 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(220, 160, 90, 0.12);
+  box-sizing: border-box;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.site-header__shelf::-webkit-scrollbar {
+  display: none;
+}
+
+.site-header__shelf-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1vw, 14px);
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.shelf-link,
+.site-nav__links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px clamp(8px, 1vw, 13px);
+  color: #d6be9f;
+  text-decoration: none;
+  font-size: clamp(0.82rem, 0.88vw, 0.90rem);
+  font-family: var(--font-tamil-sans);
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid rgba(139, 90, 43, 0.28);
+  background: rgba(30, 16, 8, 0.45);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.18s ease;
+}
+
+.shelf-link:hover,
+.site-nav__links a:hover {
+  color: #fff2db;
+  background: rgba(197, 159, 99, 0.22);
+  border-color: rgba(197, 159, 99, 0.45);
+  transform: translateY(-1px);
+}
+
+.shelf-link.active,
+.site-nav__links a.active {
+  color: #fff7eb;
+  background: linear-gradient(180deg, rgba(166, 40, 30, 0.55) 0%, rgba(94, 17, 12, 0.65) 100%);
+  border: 1px solid rgba(235, 115, 95, 0.6);
+  box-shadow: inset 0 1px 2px rgba(255, 180, 180, 0.25), 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.lamp-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(180deg, #442714 0%, #2a160a 100%);
+  border: 1px solid #7a4a25;
+  color: #f7eedc;
+  padding: 7px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: var(--font-tamil-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 0 2px 6px rgba(0,0,0,0.4);
+  transition: all 0.2s ease;
+}
+
+.lamp-toggle-btn:hover {
+  border-color: #d4a35d;
+  background: linear-gradient(180deg, #57331b 0%, #3a1f10 100%);
+  transform: translateY(-1px);
+}
+
+.lamp-toggle-btn.lamp-active {
+  background: linear-gradient(180deg, #995514 0%, #683407 100%);
+  border-color: #ffbe65;
+  color: #fff5e0;
+  box-shadow: 0 0 14px rgba(255, 175, 60, 0.5), inset 0 1px 2px rgba(255, 230, 180, 0.6);
+}
+
+/* ==========================================================================
+   PALM LEAF (ஓலை) MASTER MATERIAL & COMPONENT
+   ========================================================================== */
+.olai-strip {
+  position: relative;
+  padding: 26px clamp(64px, 7.5vw, 92px);
+  background: 
+    /* Organic Horizontal Fibers & Growth rings */
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      rgba(90, 55, 18, 0.05) 1px,
+      transparent 2px,
+      transparent 5px
+    ),
+    /* Subtle aged spots */
+    radial-gradient(ellipse at 15% 30%, rgba(95, 55, 18, 0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 70%, rgba(95, 55, 18, 0.10) 0%, transparent 45%),
+    /* Midrib groove splitting the strip horizontally */
+    linear-gradient(
+      180deg,
+      transparent 49.1%,
+      rgba(80, 48, 15, 0.38) 49.8%,
+      rgba(255, 240, 205, 0.28) 50.4%,
+      transparent 51.2%
+    ),
+    /* Dried Ochre Gradient */
+    linear-gradient(180deg, #d8b67b 0%, #cca468 18%, #c29b5b 48%, #b88f4e 52%, #c59e5f 82%, #ad803e 100%);
+  border: 1px solid #7c5828;
+  border-radius: 9px;
+  box-shadow: var(--leaf-shadow);
+  color: var(--soot-ink);
+  overflow: hidden;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.rec-kural-leaf {
+  padding: 26px clamp(64px, 7.5vw, 92px) !important;
+  margin-bottom: 22px;
+}
+
+.dictionary-leaf,
+.history-leaf {
+  padding: 32px clamp(64px, 7.5vw, 92px) !important;
+}
+
+/* Inscription Soot-Ink Carved Typography */
+.inscribed-text {
+  color: var(--soot-ink);
+  font-family: var(--font-tamil-serif);
+  text-shadow: -0.7px -0.7px 0.4px var(--soot-shadow), 0.8px 0.8px 0.5px var(--soot-highlight);
+  letter-spacing: 0.015em;
+  line-height: 1.7;
+}
+
+/* Binding Cord Holes with Depth Rim */
+.cord-eyelet {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #170d06;
+  border: 1.5px solid #4a2f14;
+  box-shadow: 
+    inset 0 3px 6px rgba(0, 0, 0, 0.9),
+    0 1px 2px rgba(255, 245, 220, 0.45);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.cord-eyelet::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: repeating-linear-gradient(
+    45deg,
+    #8f2118 0px,
+    #8f2118 2px,
+    #5a110a 2px,
+    #5a110a 4px
+  );
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.85);
+}
+
+.cord-eyelet.left { left: clamp(18px, 2.5vw, 30px); }
+.cord-eyelet.right { right: clamp(18px, 2.5vw, 30px); }
+
+/* For tall multi-row card layouts, position holes at top margin so they never cross table rows or paragraphs */
+.dictionary-leaf .cord-eyelet,
+.history-leaf .cord-eyelet,
+.verification-result-box .cord-eyelet {
+  top: 32px;
+  transform: none;
+}
+
+.verification-result-box {
+  padding: 32px clamp(64px, 7.5vw, 92px) !important;
+}
+
+.daily-kural-container .olai-strip,
+.thiruvalluvar-guide-container .olai-strip {
+  padding: clamp(32px, 5vw, 56px) clamp(64px, 7.5vw, 92px) !important;
+}
+
+/* Pulli-Kolam Inline Dividers */
+.kolam-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 18px auto;
+  opacity: 0.72;
+}
+
+.kolam-divider svg {
+  width: 140px;
+  height: 14px;
+  color: var(--soot-muted);
+}
+
+/* ==========================================================================
+   PAGE HERO & CONTAINER LAYOUT
+   ========================================================================== */
+.page-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: clamp(24px, 5vw, 48px) clamp(16px, 4vw, 32px) 80px;
+}
+
+.hero-teak-board {
+  position: relative;
+  background: 
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.06) 0px, rgba(0,0,0,0.06) 2px, transparent 2px, transparent 6px),
+    linear-gradient(180deg, #382012 0%, #24140a 60%, #1c0e06 100%);
+  border: 2px solid #5a351d;
+  border-radius: 14px;
+  padding: clamp(22px, 4vw, 36px);
+  margin-bottom: 32px;
+  box-shadow: var(--board-shadow);
+  text-align: center;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  font-family: var(--font-tamil-sans);
+  color: #dfb268;
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  margin: 0 0 10px;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: #faebd7;
+  font-family: var(--font-tamil-serif);
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.hero-subtitle {
+  max-width: 680px;
+  margin: 0 auto;
+  font-family: var(--font-tamil-sans);
+  color: #cdb79a;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   FEATURE: HOME DASHBOARD (சான்றகம் ஏட்டுக் கட்டு)
+   ========================================================================== */
+.home-bundle-cover {
+  position: relative;
+  background: 
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 10px),
+    linear-gradient(180deg, #442714 0%, #2b170a 50%, #1b0e06 100%);
+  border: 3px solid #6c4123;
+  border-radius: 16px;
+  padding: clamp(28px, 6vw, 54px) clamp(20px, 4vw, 40px);
+  margin-bottom: 40px;
+  box-shadow: 0 26px 70px rgba(0,0,0,0.7), inset 0 2px 4px rgba(255,230,190,0.15);
+  text-align: center;
+}
+
+.bundle-braided-cord {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  background: repeating-linear-gradient(
+    45deg,
+    #8f2118 0px,
+    #8f2118 4px,
+    #a6281e 4px,
+    #a6281e 8px,
+    #5a110a 8px,
+    #5a110a 12px
+  );
+  box-shadow: 2px 0 6px rgba(0,0,0,0.6), -2px 0 6px rgba(0,0,0,0.6);
+}
+
+.bundle-braided-cord.cord-left { left: clamp(30px, 8%, 70px); }
+.bundle-braided-cord.cord-right { right: clamp(30px, 8%, 70px); }
+
+/* ==========================================================================
+   FEATURE: HOME DASHBOARD (சான்றகம் ஏட்டுக் கட்டு)
+   ========================================================================== */
+.home-bundle-cover {
+  position: relative;
+  background: 
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 10px),
+    linear-gradient(180deg, #442714 0%, #2b170a 50%, #1b0e06 100%);
+  border: 3px solid #6c4123;
+  border-radius: 16px;
+  padding: clamp(28px, 6vw, 52px) clamp(20px, 4vw, 40px);
+  margin-bottom: 36px;
+  box-shadow: 0 26px 70px rgba(0,0,0,0.7), inset 0 2px 4px rgba(255,230,190,0.15);
+  text-align: center;
+}
+
+.bundle-braided-cord {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  background: repeating-linear-gradient(
+    45deg,
+    #8f2118 0px,
+    #8f2118 4px,
+    #a6281e 4px,
+    #a6281e 8px,
+    #5a110a 8px,
+    #5a110a 12px
+  );
+  box-shadow: 2px 0 6px rgba(0,0,0,0.6), -2px 0 6px rgba(0,0,0,0.6);
+}
+
+.bundle-braided-cord.cord-left { left: clamp(30px, 8%, 70px); }
+.bundle-braided-cord.cord-right { right: clamp(30px, 8%, 70px); }
+
+.home-cover-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+/* Home Quick Action Navigation Buttons */
+.home-quick-actions {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(220, 160, 90, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.quick-actions-label {
+  font-family: var(--font-tamil-sans);
+  font-size: 0.85rem;
+  color: #dfb268;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.quick-actions-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px 10px;
+  max-width: 900px;
+}
+
+.quick-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: linear-gradient(180deg, #382012 0%, #221208 100%);
+  border: 1px solid #784822;
+  border-radius: 8px;
+  color: #f0dec5;
+  text-decoration: none;
+  font-family: var(--font-tamil-sans);
+  font-size: 0.86rem;
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.12);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.quick-action-btn:hover {
+  background: linear-gradient(180deg, #53301a 0%, #341a0b 100%);
+  border-color: #d4a35d;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.5), 0 0 10px rgba(212,163,93,0.3);
+}
+
+/* Home Section Header */
+.home-section-header {
+  text-align: center;
+  margin: 36px 0 22px;
+}
+
+.home-section-title {
+  margin: 4px 0 8px;
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  color: #faebd7;
+  font-family: var(--font-tamil-serif);
+  font-weight: 800;
+}
+
+.home-section-sub {
+  margin: 0 auto;
+  max-width: 580px;
+  color: #c0aa8f;
+  font-family: var(--font-tamil-sans);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Fanned-Out Feature Leaves Grid */
+.home-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.feature-leaf-card.featured-card {
+  grid-column: 1 / -1;
+  min-height: 150px;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      rgba(90, 55, 18, 0.05) 1px,
+      transparent 2px,
+      transparent 5px
+    ),
+    linear-gradient(180deg, #ddbb7f 0%, #cda365 24%, #c39b5b 50%, #b88f4e 75%, #a87b38 100%);
+  border: 1.5px solid #8e652d;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.feature-leaf-card.featured-card .feature-leaf-title {
+  font-size: 1.55rem;
+}
+
+@media (max-width: 960px) {
+  .home-features-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .home-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-leaf-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  min-height: 200px;
+  padding: 24px clamp(46px, 4vw, 54px);
+  position: relative;
+  border-radius: 8px;
+  transition: all 0.22s ease;
+}
+
+.feature-leaf-card .cord-eyelet {
+  width: 14px;
+  height: 14px;
+}
+
+.feature-leaf-card .cord-eyelet.left {
+  left: 14px;
+}
+
+.feature-leaf-card .cord-eyelet.right {
+  right: 14px;
+}
+
+.feature-leaf-card:hover {
+  transform: translateY(-4px) scale(1.012);
+  box-shadow: 0 18px 42px rgba(10, 6, 2, 0.6), 0 0 18px rgba(216, 175, 105, 0.35);
+}
+
+.feature-leaf-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-leaf-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.feature-leaf-tag {
+  font-family: var(--font-tamil-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--soot-muted);
+  letter-spacing: 0.05em;
+  background: rgba(80, 50, 20, 0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(80, 50, 20, 0.2);
+}
+
+.feature-leaf-arrow {
+  color: var(--soot-muted);
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.feature-leaf-card:hover .feature-leaf-arrow {
+  transform: translateX(4px);
+  color: var(--soot-ink);
+}
+
+.feature-leaf-title {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--soot-ink);
+}
+
+.feature-leaf-desc {
+  margin: 0 0 16px;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--soot-mid);
+  font-family: var(--font-tamil-sans);
+}
+
+.feature-leaf-bottom {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(90, 55, 20, 0.25);
+}
+
+.feature-leaf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  background: rgba(45, 25, 10, 0.12);
+  border: 1px solid rgba(75, 45, 18, 0.3);
+  border-radius: 4px;
+  font-family: var(--font-tamil-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--soot-ink);
+  transition: all 0.18s ease;
+}
+
+.feature-leaf-card:hover .feature-leaf-btn {
+  background: var(--madder-red);
+  color: #fff6ee;
+  border-color: #63170e;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* ==========================================================================
+   INPUT DESK & STYLUS FORM STYLING
+   ========================================================================== */
+.stylus-input-panel {
+  background: linear-gradient(180deg, #2a180e 0%, #1e1008 100%);
+  border: 1.5px solid #55341d;
+  border-radius: 12px;
+  padding: clamp(18px, 3vw, 28px);
+  box-shadow: var(--board-shadow);
+  margin-bottom: 28px;
+}
+
+.stylus-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 20px;
+  background: 
+    linear-gradient(180deg, #d8b67b 0%, #caa468 50%, #c19b5c 100%);
+  border: 1.5px solid #7c5828;
+  border-radius: 8px;
+  color: var(--soot-ink);
+  font-family: var(--font-tamil-serif);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-shadow: -0.7px -0.7px 0.4px var(--soot-shadow), 0.8px 0.8px 0.5px var(--soot-highlight);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.3);
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stylus-textarea:focus {
+  border-color: #ffd27d;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.25), 0 0 10px rgba(230, 175, 85, 0.45);
+}
+
+.stylus-input {
+  flex: 1;
+  min-width: 220px;
+  box-sizing: border-box;
+  padding: 12px 18px;
+  background: linear-gradient(180deg, #d8b67b 0%, #c59f63 100%);
+  border: 1.5px solid #7c5828;
+  border-radius: 8px;
+  color: var(--soot-ink);
+  font-family: var(--font-tamil-serif);
+  font-size: 1.05rem;
+  text-shadow: -0.7px -0.7px 0.4px var(--soot-shadow), 0.8px 0.8px 0.5px var(--soot-highlight);
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+  outline: none;
+}
+
+.stylus-input:focus {
+  border-color: #ffd27d;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.2), 0 0 10px rgba(230, 175, 85, 0.45);
+}
+
+.seal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(180deg, #a6281e 0%, #75150e 100%);
+  border: 1.5px solid #d45244;
+  color: #fff6e8;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: var(--font-tamil-sans);
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), 0 4px 10px rgba(0,0,0,0.4);
+  transition: all 0.2s ease;
+}
+
+.seal-btn:hover:not(:disabled) {
+  background: linear-gradient(180deg, #bd3227 0%, #891b13 100%);
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.4), 0 6px 14px rgba(0,0,0,0.5);
+}
+
+.seal-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ghost-leaf-btn {
+  background: transparent;
+  border: 1px solid #754b2b;
+  color: #e4cdae;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-family: var(--font-tamil-sans);
+  font-size: 0.94rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ghost-leaf-btn:hover {
+  background: rgba(197, 159, 99, 0.12);
+  border-color: #c59f63;
+  color: #fff;
+}
+
+.sample-chip-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.sample-chip-label {
+  font-family: var(--font-tamil-sans);
+  font-size: 0.84rem;
+  color: #af977a;
+}
+
+.sample-chip {
+  background: rgba(84, 52, 29, 0.45);
+  border: 1px dashed #7a5030;
+  color: #ddc6a8;
+  font-family: var(--font-tamil-serif);
+  font-size: 0.86rem;
+  padding: 4px 10px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sample-chip:hover {
+  background: rgba(197, 159, 99, 0.25);
+  border-color: #d8b67b;
+  color: #fff0d5;
+}
+
+/* ==========================================================================
+   FEATURE: KURAL VERIFICATION DESK
+   ========================================================================== */
+.verification-result-box {
+  margin-top: 24px;
+  padding: clamp(24px, 4vw, 36px);
+  position: relative;
+}
+
+.verification-status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1.5px solid rgba(120, 80, 35, 0.35);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.94rem;
+}
+
+.status-badge.verified {
+  background: #25441b;
+  border: 1px solid #4a803a;
+  color: #dbffcf;
+  box-shadow: 0 0 10px rgba(50, 160, 40, 0.2);
+}
+
+.status-badge.possible_match {
+  background: #543911;
+  border: 1px solid #946827;
+  color: #ffe6aa;
+}
+
+.status-badge.unverified {
+  background: #471d17;
+  border: 1px solid #7a362c;
+  color: #ffd0c8;
+}
+
+.similarity-meter {
+  font-family: var(--font-tamil-sans);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--soot-muted);
+}
+
+.diff-chip-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 0;
+  background: rgba(70, 42, 18, 0.12);
+  border: 1px solid rgba(120, 80, 35, 0.25);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.diff-chip-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  flex-wrap: wrap;
+}
+
+.diff-expected {
+  background: #e3c188;
+  color: #1a1006;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.diff-supplied {
+  background: #d88981;
+  color: #3b0e0a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-decoration: line-through;
+}
+
+/* ==========================================================================
+   FEATURE: KURAL FOR YOU (சூழல் குறள்)
+   ========================================================================== */
+.situation-tabs-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 14px;
+  margin-bottom: 28px;
+  scrollbar-width: thin;
+  scrollbar-color: #7c5828 #22140a;
+}
+
+.situation-tab {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 18px;
+  background: linear-gradient(180deg, #382113 0%, #22140a 100%);
+  border: 1.5px solid #5a371c;
+  border-radius: 8px;
+  color: #dfcbaf;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.situation-tab:hover {
+  background: linear-gradient(180deg, #4d2d1a 0%, #2e1a0d 100%);
+  border-color: #b88f50;
+  color: #fff;
+}
+
+.situation-tab.active {
+  background: linear-gradient(180deg, #a6281e 0%, #68150d 100%);
+  border-color: #e56555;
+  color: #fff6ea;
+  box-shadow: 0 4px 12px rgba(166, 40, 30, 0.35);
+}
+
+.recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.rec-kural-leaf {
+  padding: clamp(20px, 4vw, 32px) clamp(22px, 5vw, 44px);
+  position: relative;
+}
+
+.rec-kural-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.kural-num-badge {
+  font-family: var(--font-tamil-sans);
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #8c231a;
+  background: rgba(140, 35, 26, 0.12);
+  border: 1px solid rgba(140, 35, 26, 0.25);
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+/* ==========================================================================
+   FEATURE: WORD MEANING & HISTORY (சொல்லாய்வாளர் & மரபு)
+   ========================================================================== */
+.history-cognates-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+  font-size: 0.95rem;
+}
+
+.history-cognates-table th,
+.history-cognates-table td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(120, 80, 35, 0.25);
+}
+
+.history-cognates-table th {
+  background: rgba(80, 48, 15, 0.15);
+  color: var(--soot-ink);
+  font-family: var(--font-tamil-sans);
+  font-weight: 700;
+}
+
+.history-cognates-table td {
+  color: var(--soot-mid);
+}
+
+.dedr-badge {
+  display: inline-block;
+  background: #3d2314;
+  color: #ffd899;
+  border: 1px solid #734526;
+  font-family: var(--font-tamil-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   FEATURE: THIRUVALLUVAR GUIDANCE CHAMBER
+   ========================================================================== */
+.valluvar-chamber-stage {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--board-shadow);
+  border: 2px solid #5a371c;
+  background: #140d07;
+  margin-bottom: 32px;
+}
+
+.chamber-backdrop {
+  position: relative;
+  min-height: 280px;
+  background-image: 
+    linear-gradient(180deg, rgba(20, 13, 7, 0.3) 0%, rgba(20, 13, 7, 0.95) 100%),
+    url('/images/thiruvalluvar.png');
+  background-size: cover;
+  background-position: center top;
+  display: flex;
+  align-items: flex-end;
+  padding: 28px;
+}
+
+.chamber-quote-bubble {
+  background: rgba(30, 18, 10, 0.88);
+  border: 1.5px solid #7a4e28;
+  border-radius: 12px;
+  padding: 18px 24px;
+  backdrop-filter: blur(8px);
+  color: #faebd7;
+  max-width: 640px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.chamber-controls-panel {
+  padding: 24px;
+  background: linear-gradient(180deg, #2a180d 0%, #1c0f07 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.chamber-paal-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.chamber-paal-btn {
+  flex: 1;
+  min-width: 140px;
+  padding: 12px 16px;
+  background: linear-gradient(180deg, #3c2415 0%, #26160c 100%);
+  border: 1.5px solid #5d381e;
+  border-radius: 8px;
+  color: #dfcbaf;
+  font-family: var(--font-tamil-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chamber-paal-btn:hover {
+  background: linear-gradient(180deg, #52311c 0%, #361f11 100%);
+  border-color: #d4a35d;
+  color: #fff;
+}
+
+.chamber-paal-btn.active {
+  background: linear-gradient(180deg, #8a241a 0%, #58140e 100%);
+  border-color: #e56555;
+  color: #fff5e8;
+  box-shadow: 0 4px 14px rgba(138, 36, 26, 0.45);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN FOR MOBILE SCREENS
+   ========================================================================== */
+@media (max-width: 768px) {
+  .site-header__top {
+    padding: 8px 12px;
+  }
+
+  .site-brand__subtitle {
+    display: none;
+  }
+
+  .site-header__shelf {
+    justify-content: flex-start;
+    padding: 5px 8px;
+  }
+
+  .site-header__shelf-inner {
+    justify-content: flex-start;
+    width: max-content;
+    gap: 4px;
+  }
+
+  .shelf-link,
+  .site-nav__links a {
+    padding: 5px 8px;
+    font-size: 0.82rem;
+  }
+
+  .cord-eyelet.left { left: 14px; }
+  .cord-eyelet.right { right: 14px; }
+
+  .home-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inscribed-text {
+    font-size: 1.05rem;
+  }
+}

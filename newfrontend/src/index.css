@@ -1,0 +1,95 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  color: #eee9dc;
+  background: #252b1e;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --olive-950: #1d2419;
+  --olive-900: #252b1e;
+  --olive-800: #303a27;
+  --olive-700: #46513a;
+  --sage: #a6aa8b;
+  --gold: #c5aa6a;
+  --cream: #f0e8d5;
+  --parchment: #e9dfc7;
+  --muted: #bcbba9;
+  --line: rgba(221, 211, 177, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+  background: var(--olive-900);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--olive-900);
+  color: var(--cream);
+}
+
+body, button, textarea, input, select {
+  font-family: 'Noto Sans Tamil', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Noto Serif Tamil', serif;
+  font-weight: 500;
+}
+
+a {
+  color: inherit;
+}
+
+button, input, textarea {
+  font-size: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--olive-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+#root {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

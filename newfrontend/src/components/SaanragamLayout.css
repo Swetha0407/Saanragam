@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --saanragam-ink: #fff8e9;
+  --saanragam-muted: #e6d5b6;
+  --saanragam-gold: #e3b96f;
+  --saanragam-panel: rgba(29, 19, 10, 0.72);
+  --saanragam-border: rgba(238, 205, 143, 0.35);
+}
+
+.saanragam-page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: hidden;
+  color: var(--saanragam-ink);
+  background-color: #21170e;
+  background-image: var(--page-background);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "Noto Serif Tamil", Georgia, serif;
+}
+
+.saanragam-page__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(22, 13, 6, .90) 0%, rgba(22, 13, 6, .68) 48%, rgba(22, 13, 6, .38) 100%),
+    linear-gradient(0deg, rgba(20, 12, 5, .76), rgba(20, 12, 5, .18));
+}
+
+.saanragam-page__content {
+  position: relative;
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: clamp(34px, 6vw, 84px) 0 64px;
+}
+
+.saanragam-page__hero {
+  max-width: 760px;
+  margin-bottom: 34px;
+}
+
+.saanragam-page__eyebrow {
+  margin: 0 0 12px;
+  color: var(--saanragam-gold);
+  font-size: .9rem;
+  letter-spacing: .08em;
+}
+
+.saanragam-page__hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 4.2rem);
+  line-height: 1.22;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.saanragam-page__subtitle {
+  max-width: 650px;
+  margin: 18px 0 0;
+  color: var(--saanragam-muted);
+  font-family: Inter, "Noto Serif Tamil", sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.8;
+}
+
+.saanragam-panel {
+  border: 1px solid var(--saanragam-border);
+  border-radius: 22px;
+  background: var(--saanragam-panel);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, .22);
+  padding: clamp(18px, 3vw, 30px);
+  backdrop-filter: blur(8px);
+}
+
+.saanragam-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.saanragam-feature {
+  display: block;
+  min-height: 135px;
+  padding: 22px;
+  border: 1px solid var(--saanragam-border);
+  border-radius: 18px;
+  color: inherit;
+  text-decoration: none;
+  background: rgba(29, 19, 10, .74);
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+
+.saanragam-feature:hover,
+.saanragam-feature:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--saanragam-gold);
+  background: rgba(60, 38, 17, .88);
+  outline: none;
+}
+
+.saanragam-feature h2 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+}
+
+.saanragam-feature p {
+  margin: 0;
+  color: var(--saanragam-muted);
+  font-family: Inter, "Noto Serif Tamil", sans-serif;
+  font-size: .95rem;
+  line-height: 1.65;
+}
+
+.saanragam-input,
+.saanragam-button {
+  min-height: 46px;
+  border-radius: 12px;
+  font: inherit;
+}
+
+.saanragam-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  color: #2a1b0d;
+  background: #fff8e9;
+  border: 1px solid #d9bc87;
+}
+
+.saanragam-button {
+  padding: 11px 18px;
+  border: 1px solid #e3b96f;
+  color: #241609;
+  background: #e3b96f;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.saanragam-button:hover { background: #f0ce8e; }
+.saanragam-form { display: flex; gap: 10px; align-items: center; }
+.saanragam-form > * { min-width: 0; }
+
+@media (max-width: 640px) {
+  .saanragam-page__content { width: min(100% - 28px, 1120px); }
+  .saanragam-grid { grid-template-columns: 1fr; }
+  .saanragam-form { align-items: stretch; flex-direction: column; }
+  .saanragam-form > * { width: 100%; }
+  .saanragam-page__veil {
+    background: linear-gradient(90deg, rgba(22,13,6,.88), rgba(22,13,6,.68));
+  }
+}
